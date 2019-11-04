@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Function library example</title>
+  <style>
+    input {
+      font-size: 2em;
+      margin: 10px 1px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <input class="numberInput" type="text">
+  <p></p>
+  
+  <script>
+
+    
+
+    var round = 0;
+    var playerPoints = 1;
+    var computerPoints = 1;
+
+    function game() {
+
+        function computerPlay() {
+        let randomNumber = Math.floor((Math.random() * 3) + 1);
+
+        return (randomNumber === 1)? "Rock":
+               (randomNumber === 2)? "Paper":
+               "Scissors";
+        }
+      
+        function playRound(playerSelection, computerSelection) {
+        let playerSelectionF = playerSelection.charAt().toUpperCase() + playerSelection.substr(1).toLowerCase();
+
+        round++;
+
+        return (playerSelectionF === computerSelection)? "It's a draw":
+               (playerSelectionF === "Rock" && computerSelection === "Scissors" ||
+                playerSelectionF === "Scissors" && computerSelection === "Paper" ||
+                playerSelectionF === "Paper" && computerSelection === "Rock")? 
+                `You win! ${playerSelectionF} beats ${computerSelection}. \n Points: ${playerPoints++}`:
+                `Computer win! ${computerSelection} beats ${playerSelectionF}. \n Points ${computerPoints++}`;
+        }
+
+        
+
+    const computerSelection = computerPlay();
+    const playerSelection = prompt("Rock, Paper or Scissors");
+    
+    console.log(playRound(playerSelection, computerSelection));
+    
+
+    }
+    game();
+    game();
+    game(); 
+    game();
+    game();
+
+    if (round == 5 && computerPoints === playerPoints) {alert("It's a draw")}
+      else if (round == 5 && computerPoints > playerPoints) { alert("You lost!")}
+        else {alert("You won!")}
+
+    
+
+  </script>
+</body>
+</html>
