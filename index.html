@@ -13,9 +13,9 @@
 <body>
   	
   	<div>
-  		<p id="rounds">Rounds</p>
-  		<p id="scorePlayer">Your score</p>
-  		<p id="scoreComputer">Computer score</p>
+  		<p id="rounds">Round: 0</p>
+  		<p id="scorePlayer">Your score: 0</p>
+  		<p id="scoreComputer">Computer score: 0</p>
   	</div>
     <div><p id="result"></p></div>
     <div id="container">
@@ -23,61 +23,12 @@
 	  <button id="Paper">Paper</button>
 	  <button id="Scissors">Scissors</button>
 	</div>
+  <div id="final"><h1></h1></div>
   
-  <script>
-
-  	function gamePlay(e) { 
 
 
-  		const computerPlay = function() {
-	    let randomNumber = Math.floor((Math.random() * 3) + 1);
-	    return (randomNumber === 1)? "Rock":
-	           (randomNumber === 2)? "Paper":
-	           "Scissors";
-	    }
-
-	    const computerSelection = computerPlay();
-  		
-  		let playerSelection = e.target.id;
-
-  		var rounds = document.querySelector(`#rounds`);
-    	rounds.textContent = ++round;
-
-  		if (playerSelection === computerSelection ){
-        return result.textContent = `It's a draw. Your points: ${playerPoints}`;
-      } else if (playerSelection === "Rock" && computerSelection === "Scissors" ||
-               playerSelection === "Scissors" && computerSelection === "Paper" ||
-               playerSelection === "Paper" && computerSelection === "Rock") {
-        return result.textContent = `You win! Your points: ${++playerPoints} ${playerSelection} beats ${computerSelection}`;
-      } else {return result.textContent = `Computer win! ${computerSelection} beats ${playerSelection}`};
-
-      
-		if (round == 5 && computerPoints === playerPoints) {alert("It's a draw")}
-	      else if (round == 5 && computerPoints > playerPoints) { alert("You lost!")}
-	        else {alert("You won!")}
-
-
-
-  	}
-
-	
-
-	const buttons = document.querySelectorAll('button');  	
-  		buttons.forEach((button) => {
-			button.addEventListener('click', gamePlay);
-	});
-
-  	
-  		var round = 0 ;
-    	var playerPoints = 0;
-    	var computerPoints = 0;
-	
-  		var result = document.querySelector('#result');
-  		result.textContent = `Start.`;
-
-
-     
-    
+  
+  <script src="script.js">
 
   </script>
 </body>
