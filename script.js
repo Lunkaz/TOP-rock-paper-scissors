@@ -2,17 +2,15 @@
   	function gamePlay(e) { 
 
       const reset = function() {
-        //;
-        
         setTimeout("location.reload(true);", 1000);
       }
 
 
   		const computerPlay = function() {
-	    let randomNumber = Math.floor((Math.random() * 3) + 1);
-	    return (randomNumber === 1)? "Rock":
-	           (randomNumber === 2)? "Paper":
-	           "Scissors";
+  	    let randomNumber = Math.floor((Math.random() * 3) + 1);
+  	    return (randomNumber === 1)? "Rock":
+  	           (randomNumber === 2)? "Paper":
+  	           "Scissors";
 	    }
 
 	    const computerSelection = computerPlay();
@@ -23,16 +21,16 @@
     	rounds.textContent = `Round: ${++round}`;
 
   		if (playerSelection === computerSelection ){
-        result.textContent = `It's a draw.`;
-      } else if (playerSelection === "Rock" && computerSelection === "Scissors" ||
-               playerSelection === "Scissors" && computerSelection === "Paper" ||
-               playerSelection === "Paper" && computerSelection === "Rock") {
-         result.textContent = `You win! ${playerSelection} beats ${computerSelection}`;
-         scorePlayer.innerText = `Your Score: ${++playerPoints}`;
-      
-      } else {
-         result.textContent = `Computer win! ${computerSelection} beats ${playerSelection}`;
-         scoreComputer.textContent = `Computer score: ${++computerPoints}`;
+          result.textContent = `It's a draw.`;
+        } else if (playerSelection === "Rock" && computerSelection === "Scissors" ||
+                 playerSelection === "Scissors" && computerSelection === "Paper" ||
+                 playerSelection === "Paper" && computerSelection === "Rock") {
+           result.textContent = `You win! ${playerSelection} beats ${computerSelection}`;
+           scorePlayer.innerText = `Your Score: ${++playerPoints}`;
+        
+        } else {
+           result.textContent = `Computer win! ${computerSelection} beats ${playerSelection}`;
+           scoreComputer.textContent = `Computer score: ${++computerPoints}`;
       };
 
       const finalWinner = document.querySelector(`h1`);
