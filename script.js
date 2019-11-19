@@ -3,8 +3,8 @@
 
       const reset = function() {
         //;
-        round = -1;
-        setTimeout("location.reload(true);", 1600);
+        
+        setTimeout("location.reload(true);", 1000);
       }
 
 
