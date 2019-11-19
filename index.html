@@ -11,7 +11,12 @@
   </style>
 </head>
 <body>
-  
+  	
+  	<div>
+  		<p id="rounds"></p>
+  		<p id="scorePlayer"></p>
+  		<p id="socreComputer"></p>
+  	</div>
     <div><p id="result"></p></div>
     <div id="container">
 	  <button id="Rock">Rock</button>
@@ -24,7 +29,6 @@
   	function gamePlay(e) { 
 
 
-
   		const computerPlay = function() {
 	    let randomNumber = Math.floor((Math.random() * 3) + 1);
 	    return (randomNumber === 1)? "Rock":
@@ -35,15 +39,24 @@
 	    const computerSelection = computerPlay();
   		
   		let playerSelection = e.target.id;
-  		round++;
-  		if (playerSelection === computerSelection ){return result.textContent = `It's a draw.\n Round: ${round}`;}
+
+  		var rounds = document.querySelector(`#rounds`);
+    	rounds.textContent = ++round;
+
+  		if (playerSelection === computerSelection ){return result.textContent = `It's a draw.`;}
   			else if
   				(playerSelection === "Rock" && computerSelection === "Scissors" ||
                 playerSelection === "Scissors" && computerSelection === "Paper" ||
                 playerSelection === "Paper" && computerSelection === "Rock")
-                 {return result.textContent = `You win! ${playerSelection} beats ${computerSelection}.\n Round: ${round}. \n Points: ${playerPoints++}`}
-                else {return result.textContent = `Computer win! ${computerSelection} beats ${playerSelection}.\n Round: ${round}. \n Points ${computerPoints++}`};
-    	
+                 {return result.textContent = `You win! ${playerSelection} beats ${computerSelection}`}
+                else {return result.textContent = `Computer win! ${computerSelection} beats ${playerSelection}`};
+
+        
+		if (round == 5 && computerPoints === playerPoints) {alert("It's a draw")}
+	      else if (round == 5 && computerPoints > playerPoints) { alert("You lost!")}
+	        else {alert("You won!")}
+
+
 
   	}
 
@@ -60,9 +73,9 @@
     	var computerPoints = 1;
 	
   		var result = document.querySelector('#result');
-  		result.textContent = `Start. \n Round:`;
+  		result.textContent = `Start.`;
 
-   
+
      
     
 
