@@ -13,9 +13,9 @@
 <body>
   	
   	<div>
-  		<p id="rounds"></p>
-  		<p id="scorePlayer"></p>
-  		<p id="socreComputer"></p>
+  		<p id="rounds">Rounds</p>
+  		<p id="scorePlayer">Your score</p>
+  		<p id="scoreComputer">Computer score</p>
   	</div>
     <div><p id="result"></p></div>
     <div id="container">
@@ -43,15 +43,15 @@
   		var rounds = document.querySelector(`#rounds`);
     	rounds.textContent = ++round;
 
-  		if (playerSelection === computerSelection ){return result.textContent = `It's a draw.`;}
-  			else if
-  				(playerSelection === "Rock" && computerSelection === "Scissors" ||
-                playerSelection === "Scissors" && computerSelection === "Paper" ||
-                playerSelection === "Paper" && computerSelection === "Rock")
-                 {return result.textContent = `You win! ${playerSelection} beats ${computerSelection}`}
-                else {return result.textContent = `Computer win! ${computerSelection} beats ${playerSelection}`};
+  		if (playerSelection === computerSelection ){
+        return result.textContent = `It's a draw. Your points: ${playerPoints}`;
+      } else if (playerSelection === "Rock" && computerSelection === "Scissors" ||
+               playerSelection === "Scissors" && computerSelection === "Paper" ||
+               playerSelection === "Paper" && computerSelection === "Rock") {
+        return result.textContent = `You win! Your points: ${++playerPoints} ${playerSelection} beats ${computerSelection}`;
+      } else {return result.textContent = `Computer win! ${computerSelection} beats ${playerSelection}`};
 
-        
+      
 		if (round == 5 && computerPoints === playerPoints) {alert("It's a draw")}
 	      else if (round == 5 && computerPoints > playerPoints) { alert("You lost!")}
 	        else {alert("You won!")}
@@ -68,9 +68,9 @@
 	});
 
   	
-  		var round = 0;
-    	var playerPoints = 1;
-    	var computerPoints = 1;
+  		var round = 0 ;
+    	var playerPoints = 0;
+    	var computerPoints = 0;
 	
   		var result = document.querySelector('#result');
   		result.textContent = `Start.`;
