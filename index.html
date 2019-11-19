@@ -11,59 +11,59 @@
   </style>
 </head>
 <body>
-
-  <p></p>
+  
+    <div><p id="result"></p></div>
+    <div id="container">
+	  <button id="Rock">Rock</button>
+	  <button id="Paper">Paper</button>
+	  <button id="Scissors">Scissors</button>
+	</div>
   
   <script>
 
-    
+  	function gamePlay(e) { 
 
-    var round = 0;
-    var playerPoints = 1;
-    var computerPoints = 1;
 
-    function game() {
 
-        function computerPlay() {
-        let randomNumber = Math.floor((Math.random() * 3) + 1);
+  		const computerPlay = function() {
+	    let randomNumber = Math.floor((Math.random() * 3) + 1);
+	    return (randomNumber === 1)? "Rock":
+	           (randomNumber === 2)? "Paper":
+	           "Scissors";
+	    }
 
-        return (randomNumber === 1)? "Rock":
-               (randomNumber === 2)? "Paper":
-               "Scissors";
-        }
-      
-        function playRound(playerSelection, computerSelection) {
-        let playerSelectionF = playerSelection.charAt().toUpperCase() + playerSelection.substr(1).toLowerCase();
+	    const computerSelection = computerPlay();
+  		
+  		let playerSelection = e.target.id;
+  		round++;
+  		if (playerSelection === computerSelection ){return result.textContent = `It's a draw.\n Round: ${round}`;}
+  			else if
+  				(playerSelection === "Rock" && computerSelection === "Scissors" ||
+                playerSelection === "Scissors" && computerSelection === "Paper" ||
+                playerSelection === "Paper" && computerSelection === "Rock")
+                 {return result.textContent = `You win! ${playerSelection} beats ${computerSelection}.\n Round: ${round}. \n Points: ${playerPoints++}`}
+                else {return result.textContent = `Computer win! ${computerSelection} beats ${playerSelection}.\n Round: ${round}. \n Points ${computerPoints++}`};
+    	
 
-        round++;
+  	}
 
-        return (playerSelectionF === computerSelection)? "It's a draw":
-               (playerSelectionF === "Rock" && computerSelection === "Scissors" ||
-                playerSelectionF === "Scissors" && computerSelection === "Paper" ||
-                playerSelectionF === "Paper" && computerSelection === "Rock")? 
-                `You win! ${playerSelectionF} beats ${computerSelection}. \n Points: ${playerPoints++}`:
-                `Computer win! ${computerSelection} beats ${playerSelectionF}. \n Points ${computerPoints++}`;
-        }
+	
 
-        
+	const buttons = document.querySelectorAll('button');  	
+  		buttons.forEach((button) => {
+			button.addEventListener('click', gamePlay);
+	});
 
-    const computerSelection = computerPlay();
-    const playerSelection = prompt("Rock, Paper or Scissors");
-    
-    console.log(playRound(playerSelection, computerSelection));
-    
+  	
+  		var round = 0;
+    	var playerPoints = 1;
+    	var computerPoints = 1;
+	
+  		var result = document.querySelector('#result');
+  		result.textContent = `Start. \n Round:`;
 
-    }
-    game();
-    game();
-    game(); 
-    game();
-    game();
-
-    if (round == 5 && computerPoints === playerPoints) {alert("It's a draw")}
-      else if (round == 5 && computerPoints > playerPoints) { alert("You lost!")}
-        else {alert("You won!")}
-
+   
+     
     
 
   </script>
