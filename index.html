@@ -2,31 +2,42 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Function library example</title>
-  <style>
-    input {
-      font-size: 2em;
-      margin: 10px 1px 0;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rock. Paper. Scissors.</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+
 </head>
 <body>
   	
-  	<div>
-  		<p id="rounds">Round: 0</p>
-  		<p id="scorePlayer">Your score: 0</p>
-  		<p id="scoreComputer">Computer score: 0</p>
-  	</div>
-    <div><p id="result"></p></div>
-    <div id="container">
-	  <button id="Rock">Rock</button>
-	  <button id="Paper">Paper</button>
-	  <button id="Scissors">Scissors</button>
-	</div>
-  <div id="final"><h1></h1></div>
+  <div style="display: flex; justify-content: space-around;">
+    <p>Your score<br> <br><span id="scorePlayer"></span></p>
+    <p>Computer's score<br> <br><span id="scoreComputer"></span></p>
+  </div>
+    
+  <div id="container">
+	  <button class="skew-button"><span id="Rock">Rock</span></button>
+	  <button class="skew-button"><span id="Paper">Paper</span></button>
+	  <button class="skew-button"><span id="Scissors">Scissors</span></button>
+  </div>
   
+  <div><p id="result"></p></div>
+    
+      
+  <section>
+    <div id="myModal" class="modal">
 
+      <div class="modal-content">
+        
+        <div class="modal-header">
+          <div id="final"><span>Points<br>3</span>
+            <h1></h1>
+          </div>
+        </div>
+        
+      </div>
 
+    </div>
+  </section>
   
   <script src="script.js">
 
