@@ -1,67 +1,72 @@
 
-  	function gamePlay(e) { 
+let chartNumbers = [ 0, 0];
 
-      const reset = function() {
-        setTimeout("location.reload(true);", 1000);
-      }
+function gamePlay(e) {
+  
+  const playerSelection = e.target.id;
+  const computerSelection = computerPlay();
 
-
-  		const computerPlay = function() {
-  	    let randomNumber = Math.floor((Math.random() * 3) + 1);
-  	    return (randomNumber === 1)? "Rock":
-  	           (randomNumber === 2)? "Paper":
-  	           "Scissors";
-	    }
-
-	    const computerSelection = computerPlay();
-  		
-  		let playerSelection = e.target.id;
-
-  		var rounds = document.querySelector(`#rounds`);
-    	rounds.textContent = `Round: ${++round}`;
-
-  		if (playerSelection === computerSelection ){
-          result.textContent = `It's a draw.`;
+  if (playerSelection === computerSelection ){
+          $roundWinner.textContent = `It's a draw.`;
         } else if (playerSelection === "Rock" && computerSelection === "Scissors" ||
                  playerSelection === "Scissors" && computerSelection === "Paper" ||
                  playerSelection === "Paper" && computerSelection === "Rock") {
-           result.textContent = `You win! ${playerSelection} beats ${computerSelection}`;
-           scorePlayer.innerText = `Your Score: ${++playerPoints}`;
+           $roundWinner.innerText = `You win!\n${playerSelection} beats ${computerSelection}`;
+           $scorePlayer.innerText = `${++chartNumbers[0]}`;
         
         } else {
-           result.textContent = `Computer win! ${computerSelection} beats ${playerSelection}`;
-           scoreComputer.textContent = `Computer score: ${++computerPoints}`;
-      };
+           $roundWinner.innerText = `Computer win!\n${computerSelection} beats ${playerSelection}`;
+           $scoreComputer.innerText = `${++chartNumbers[1]}`;
+      };    
+        isWinner();
+   
+   }
 
-      const finalWinner = document.querySelector(`h1`);
-
-      if (round === 5) {
-
-        if (playerPoints === computerPoints) {
-          finalWinner.textContent = "It's a draw!";
-           reset();
-        } else if (playerPoints > computerPoints) {
-           finalWinner.textContent = "You win!";reset(); 
-        } else {  finalWinner.textContent ="Computer win!"; reset(); }
-
-      }
-  	}
+function comparePlayers(playerSelection, computerSelection) {
+  return chartNumbers[0] > chartNumbers[1] ? $finalWinner.innerText = 'You win!': $finalWinner.innerText = 'Computer wins!';
+}
 
 
 
-	const buttons = document.querySelectorAll('button');  	
-  		buttons.forEach((button) => {
+
+
+
+function isWinner(playerSelection, computerSelection) {
+  if (chartNumbers[0] == 3 || chartNumbers[1] == 3) {
+    comparePlayers(playerSelection, computerSelection);
+  //}
+  //if (chartNumbers[0] == 4 || chartNumbers[1] == 4) {
+     chartNumbers [0]=0;
+     chartNumbers[1]=0;
+    $scorePlayer.innerText = ``;
+    $scoreComputer.textContent = ``;
+    
+				modal.style.display = "block";
+
+			
+        modal.onclick = function( ) {
+          modal.style.display = "none";
+        }
+
+			
+    
+    
+}}
+
+// DOM
+const $scorePlayer = document.querySelector('#scorePlayer');
+const $scoreComputer = document.querySelector('#scoreComputer');
+const $roundWinner= document.querySelector('#result');
+const $finalWinner = document.querySelector('h1');
+const $buttons = document.querySelectorAll('button');  	
+  		$buttons.forEach((button) => {
 			button.addEventListener('click', gamePlay);
 	});
-
-  	
-  		var round = 0 ;
-    	var playerPoints = 0;
-    	var computerPoints = 0;
-	
-  		var result = document.querySelector('#result');
-  		result.textContent = `Start.`;
-
-      const scorePlayer = document.querySelector('#scorePlayer');
-      const scoreComputer = document.querySelector('#scoreComputer');
-    
+  // Computer
+const computerPlay = function() {
+  let randomNumber = Math.floor((Math.random() * 3) + 1);
+  return (randomNumber === 1)? "Rock":
+  	     (randomNumber === 2)? "Paper":
+  	     "Scissors";
+}
+var modal = document.getElementById('myModal');
